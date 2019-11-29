@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Task List</h2>
+  <p>The table below shows the task and username</p>
+  <table class="table">
+    <thead>
+      <tr>
+         <th>User Name</th>
+        <th> Task Name</th>
+        <th> Task Description</th>
+          <th> Delete </th>
+          <th> Update Here</th>
+
+      </tr>
+    </thead>
+    <tbody>
+ {% for t in object_list %}
+    <tr>
+        <td>{{ t.username }}</td>
+
+        <td>{{ t.tname }}</td>
+        <td>{{t.des }}</td>
+        <td>
+        <a href="{% url 't_delete' t.id %}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-trash"></span>
+        </a>
+       </td>
+       <td>
+       <a href="{%  url 't_edit' t.id %}" class="btn btn-info btn-lg">
+           <span class="glyphicon glyphicon-edit"></span> </a> </td>
+
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+    <a href="{%  url 't_create' %}" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-plus"></span></a>
+
+
+
+</div>
+
+</body>
+</html>
+
